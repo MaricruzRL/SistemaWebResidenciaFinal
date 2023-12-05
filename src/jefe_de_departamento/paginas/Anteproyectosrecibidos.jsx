@@ -19,7 +19,8 @@ import './../../estilos_impresion/externo/horizontal/estilo-impresion_externo_ho
 function Anteproyectosrecibidos(props) {
 
   const nombrealm = props.graphData.graphData.graphData.displayName;
-  const correo = props.graphData.graphData.graphData.mail;
+   //const correo = props.graphData.graphData.graphData.mail;
+   const correo = props.graphData.graphData.graphData.mail.toLowerCase();
 
 
   const [data, setData] = useState(null);
@@ -342,8 +343,8 @@ console.log("Esto es el año actual !", anioactual);
   return (
     <div className="contenido__anteproyectosubir">
       <div className="Anteproyectosubir__titulo">
-        <h1>Buen Dia Jefe De Departamento, estos son los Anteproyectos
-               Aceptados Por la cordinadora
+        <h1>Buen día Jefe De Departamento, estos son los Anteproyectos
+               Aceptados Por la coordinadora
             <br/>De Residencia Profesional</h1>
       </div>
       <div className="Anteproyectosubir__preguntas">
@@ -353,13 +354,12 @@ console.log("Esto es el año actual !", anioactual);
               <tr>
                 <th>Número de Control</th>
                 <th>Nombre</th>
-
                 <th>Nombre de Anteproyecto</th>
                 <th>Periodo</th>
                 <th>Empresa</th>
-                <th>AsesorE</th>
-                <th>AsesorI</th>
-                <th>Nombre Documento</th>
+                <th>Asesor Externo</th>
+                <th>Asesor Interno</th>
+                <th>Nombre Doc</th>
                 <th>Carrera</th>
                 <th>Estado</th>
                 <th>Observaciones</th>
@@ -403,7 +403,7 @@ console.log("Esto es el año actual !", anioactual);
                       className={
                         item.attributes.estado === "Aprobado"
                           ? "aprobado"
-                          : item.attributes.estado === "En Revision"
+                          : item.attributes.estado === "En Revisión"
                           ? "en-revision"
                           : item.attributes.estado === "Corregir"
                           ? "corregir"

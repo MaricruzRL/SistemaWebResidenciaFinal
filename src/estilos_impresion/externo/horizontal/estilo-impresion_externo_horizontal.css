@@ -65,14 +65,13 @@
       margin-bottom: 20px; /* Alineación del contenido del pie de página */
     }
     
-      .contenidoexternohorizontal::-webkit-scrollbar {
-    display: none;
-  }
-
-  .contenidoexternohorizontal {
-    scrollbar-width: none;
-  }
-
+    .contenidoexternohorizontal::-webkit-scrollbar {
+      display: none;
+    }
+  
+    .contenidoexternohorizontal {
+      scrollbar-width: none;
+    }
 
   }
   
@@ -90,7 +89,7 @@
     display: flex;
     justify-content: center;
     
-    overflow-y: auto;
+    /*overflow-y: auto;*/
     
   }
   

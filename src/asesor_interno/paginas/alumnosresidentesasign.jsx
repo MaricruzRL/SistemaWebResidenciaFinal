@@ -17,7 +17,8 @@ import axios from "axios";
 
 const AlumnosResidentesAsign = (props) => {
   const nombrealm = props.graphData.graphData.graphData.displayName;
-  const correo = props.graphData.graphData.graphData.mail;
+  //const correo = props.graphData.graphData.graphData.mail;
+  const correo = props.graphData.graphData.graphData.mail.toLowerCase();
   const numerosExtraidos = correo.match(/\d+/);
   const numerosComoCadena = numerosExtraidos ? numerosExtraidos[0] : "";
   // Para obtener los números como un número entero, puedes hacer:
@@ -25,9 +26,9 @@ const AlumnosResidentesAsign = (props) => {
 
   //console.log("esto es props", correo);
   const [data, setData] = useState(null);
-  //PARA VISUALISAR ESPECIALIDEDEDES
+  //PARA VISUALIZAR ESPECIALIDEDEDES
   const [especialidades, setEspecialidades] = useState(null);
-  //PARA VISUALISAR ESPECIALIDEDEDES
+  //PARA VISUALIZAR ESPECIALIDEDEDES
   const [asesores, setAsesores] = useState(null);
 
   const [selectedFile, setSelectedFile] = useState(null);
@@ -128,7 +129,7 @@ const AlumnosResidentesAsign = (props) => {
           <th>Nombre</th>
           <th>Nombre de Anteproyecto</th>
           <th>Nombre de documento</th>
-          <th>Esatado</th>
+          <th>Estado</th>
           <th>Carrera</th>
           <th>Acciones</th>
         </tr>
@@ -147,7 +148,7 @@ const AlumnosResidentesAsign = (props) => {
                   className={
                     item.attributes.estado === "Aprobado"
                       ? "aprobado"
-                      : item.attributes.estado === "En Revision"
+                      : item.attributes.estado === "En Revisión"
                       ? "en-revision"
                       : item.attributes.estado === "Corregir"
                       ? "corregir"

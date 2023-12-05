@@ -103,7 +103,7 @@ const Resultadoevaluaciones = (props) => {
       const fetchedEvaluE2 = await fetchData(nuevaluaE2);
       setEvalue2(fetchedEvaluE2);
 
-      console.log("Cargo todos los datos!", fetchedEvalu);
+      console.log("¡Cargo todos los datos!", fetchedEvalu);
       //setEditingMode(true)
     } catch (error) {
       console.error("Error al obtener los datos:", error);
@@ -188,6 +188,9 @@ const Resultadoevaluaciones = (props) => {
   };
 //########################################################
 
+const [mensajeresultado, setmensajeresultado] = useState(false);
+
+
 useEffect(() => {
   fetchDataAsync2();
 }, [correo]);
@@ -235,11 +238,13 @@ async function fetchDataAsync2() {
       carrera: especialidad,
       asesorI: asesorin,
     });
-    
+      
     if(!residenteSeleccionado){
       const successMessage = "Por favor, cargue su anteproyecto para una visualización más detallada de esta sección.";
       alert(successMessage);
 
+    }else{
+      setmensajeresultado(true);  
     }
     console.log("Esto es residente seleccionado", residenteSeleccionado);
   } catch (error) {
@@ -284,8 +289,8 @@ async function fetchDataAsync2() {
         <table border="1">
           <thead>
             <tr>
-              <th>EVALUACION DE REPORTE FINAL DE RESIDENCIA PROFESIONAL</th>
-              <th>Calificaion</th>
+              <th>EVALUACIÓN DE REPORTE FINAL DE RESIDENCIA PROFESIONAL</th>
+              <th>Calificación</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -318,7 +323,7 @@ async function fetchDataAsync2() {
                           {/* Fila para evalu */}
                           {evaluacionCorrespondiente && (
                             <tr>
-                              <td>Evaluacion de Asesor Interno</td>
+                              <td>Evaluación de Asesor Interno</td>
                               <td>
                                 {evaluacionCorrespondiente.attributes.dato15}
                               </td>
@@ -326,20 +331,20 @@ async function fetchDataAsync2() {
                                 className="btn-asig"
                                 onClick={handleCrearClick}
                               >
-                                Imprimir Evaluacion Interna
+                                Imprimir Evaluación Interna
                               </button>
                             </tr>
                           )}
 
                           {/* Fila para evaluE */}
-                          {evaluacionCorrespondienteE && (
+                          {evaluacionCorrespondienteE && item.attributes.fuera === "No" && (
                             <tr>
-                              <td>Evaluacion de Asesor Externo</td>
+                              <td>Evaluación de Asesor Externo</td>
                               <td>
                                 {evaluacionCorrespondienteE.attributes.dato15}
                               </td>
                               <button className="btn-asig" onClick={mostrarp2}>
-                                Imprimir Evaluacion Externa 
+                                Imprimir Evaluación Externa 
                               </button>
                               {/* Agrega un botón o lo que necesites para evaluE */}
                             </tr>
@@ -373,7 +378,7 @@ async function fetchDataAsync2() {
                     <br />
                     "Por una Tecnología Propia como principio de libertad"
                     <br />
-                    EVALUACION Y SEGUIMIENTO DE RESIDENCIA
+                    EVALUACIÓN Y SEGUIMIENTO DE RESIDENCIA
                     <br />
                     PROFESIONAL
                   </td>
@@ -403,7 +408,7 @@ async function fetchDataAsync2() {
                       Nombre del Residente: {item.attributes.nombre}{" "}
                     </p>
                     <p style={{ textAlign: "left" }}>
-                      Numero de control: {newItem.ncontrol}
+                      Número de control: {newItem.ncontrol}
                     </p>
                     <p style={{ textAlign: "left" }}>
                       Nombre del Proyecto: {item.attributes.nombre_anteproyecto}
@@ -412,7 +417,7 @@ async function fetchDataAsync2() {
                       Programa Educativo: {item.attributes.carrera}
                     </p>
                     <p style={{ textAlign: "left" }}>
-                      Periodo de realizacion de la residencia profesional:
+                      Periodo de realización de la residencia profesional:
                       {item.attributes.periodo}{" "}
                     </p>
                     <p style={{ textAlign: "left" }}>
@@ -488,7 +493,7 @@ async function fetchDataAsync2() {
 
                               <th>Criterios a evaluar </th>
                               <th>Valor</th>
-                              <th>Evaluacion</th>
+                              <th>Evaluación</th>
 
                               {criteriosAEvaluar.map((criterio, index) => (
                                 <tr key={item.id + `-dato${index + 1}`}>
@@ -647,7 +652,7 @@ async function fetchDataAsync2() {
                     <br />
                     "Por una Tecnología Propia como principio de libertad"
                     <br />
-                    EVALUACION Y SEGUIMIENTO DE RESIDENCIA
+                    EVALUACIÓN Y SEGUIMIENTO DE RESIDENCIA
                     <br />
                     PROFESIONAL
                   </td>
@@ -676,7 +681,7 @@ async function fetchDataAsync2() {
                       Nombre del Residente: {item.attributes.nombre}{" "}
                     </p>
                     <p style={{ textAlign: "left" }}>
-                      Numero de control: {item.attributes.ncontrol}
+                      Número de control: {item.attributes.ncontrol}
                     </p>
                     <p style={{ textAlign: "left" }}>
                       Nombre del Proyecto: {item.attributes.nombre_anteproyecto}
@@ -685,7 +690,7 @@ async function fetchDataAsync2() {
                       Programa Educativo: {item.attributes.carrera}
                     </p>
                     <p style={{ textAlign: "left" }}>
-                      Periodo de realizacion de la residencia profesional:
+                      Periodo de realización de la residencia profesional:
                       {item.attributes.periodo}{" "}
                     </p>
                     <p style={{ textAlign: "left" }}>
@@ -761,7 +766,7 @@ async function fetchDataAsync2() {
 
                               <th>Criterios a evaluar </th>
                               <th>Valor</th>
-                              <th>Evaluacion</th>
+                              <th>Evaluación</th>
                               {criteriosAEvaluar.map((criterio, index) => (
                                 <tr key={item.id + `-dato${index + 1}`}>
                                   <td>{criterio.label}</td>
@@ -870,7 +875,7 @@ async function fetchDataAsync2() {
                             <>
                            
                            <p>
-                            Fecha Evaluacion 
+                            Fecha Evaluación 
                             <br />
                              {evaluacionCorrespondiente.attributes.fecha} </p>
                             
@@ -904,8 +909,8 @@ async function fetchDataAsync2() {
         <table border="1">
           <thead>
             <tr>
-              <th>EVALUACION Y SEGUIMIENTO DE RESIDENCIA PROFESIONAL</th>
-              <th>Calificaion</th>
+              <th>EVALUACIÓN Y SEGUIMIENTO DE RESIDENCIA PROFESIONAL</th>
+              <th>Calificación</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -938,7 +943,7 @@ async function fetchDataAsync2() {
                           {/* Fila para evalu */}
                           {evaluacionCorrespondiente && (
                             <tr>
-                              <td>Evaluacion de Asesor Interno</td>
+                              <td>Evaluación de Asesor Interno</td>
                               <td>
                                 {evaluacionCorrespondiente.attributes.dato10}
                               </td>
@@ -946,20 +951,20 @@ async function fetchDataAsync2() {
                                 className="btn-asig"
                                 onClick={mostrarp3}
                               >
-                                Imprimir Evaluacion Interna
+                                Imprimir Evaluación Interna
                               </button>
                             </tr>
                           )}
 
                           {/* Fila para evaluE */}
-                          {evaluacionCorrespondienteE && (
+                          {evaluacionCorrespondienteE && item.attributes.fuera === "No" && (
                             <tr>
-                              <td>Evaluacion de Asesor Externo</td>
+                              <td>Evaluación de Asesor Externo</td>
                               <td>
                                 {evaluacionCorrespondienteE.attributes.dato10}
                               </td>
                               <button className="btn-asig" onClick={mostrarp4}>
-                                Imprimir Evaluacion Externa
+                                Imprimir Evaluación Externa
                               </button>
                               {/* Agrega un botón o lo que necesites para evaluE */}
                             </tr>
@@ -994,7 +999,7 @@ async function fetchDataAsync2() {
                     <br />
                     "Por una Tecnología Propia como principio de libertad"
                     <br />
-                    EVALUACION Y SEGUIMIENTO DE RESIDENCIA
+                    EVALUACIÓN Y SEGUIMIENTO DE RESIDENCIA
                     <br />
                     PROFESIONAL
                   </td>
@@ -1023,7 +1028,7 @@ async function fetchDataAsync2() {
                       Nombre del Residente: {item.attributes.nombre}{" "}
                     </p>
                     <p style={{ textAlign: "left" }}>
-                      Numero de control: {newItem.ncontrol}
+                      Número de control: {newItem.ncontrol}
                     </p>
                     <p style={{ textAlign: "left" }}>
                       Nombre del Proyecto: {item.attributes.nombre_anteproyecto}
@@ -1032,7 +1037,7 @@ async function fetchDataAsync2() {
                       Programa Educativo: {item.attributes.carrera}
                     </p>
                     <p style={{ textAlign: "left" }}>
-                      Periodo de realizacion de la residencia profesional:
+                      Periodo de realización de la residencia profesional:
                       {item.attributes.periodo}{" "}
                     </p>
                     <p style={{ textAlign: "left" }}>
@@ -1108,7 +1113,7 @@ async function fetchDataAsync2() {
 
                               <th>Criterios a evaluar </th>
                               <th>Valor</th>
-                              <th>Evaluacion</th>
+                              <th>Evaluación</th>
 
                               {criteriosAEvaluar2.map((criterio, index) => (
                                 <tr key={item.id + `-dato${index + 1}`}>
@@ -1218,7 +1223,7 @@ async function fetchDataAsync2() {
                             <>
                            
                            <p> 
-                            Fecha Evaluacion 
+                            Fecha Evaluación 
                             <br />
                             {evaluacionCorrespondiente.attributes.fecha} </p>
                             
@@ -1268,7 +1273,7 @@ async function fetchDataAsync2() {
                     <br />
                     "Por una Tecnología Propia como principio de libertad"
                     <br />
-                    EVALUACION Y SEGUIMIENTO DE RESIDENCIA
+                    EVALUACIÓN Y SEGUIMIENTO DE RESIDENCIA
                     <br />
                     PROFESIONAL
                   </td>
@@ -1297,7 +1302,7 @@ async function fetchDataAsync2() {
                       Nombre del Residente: {item.attributes.nombre}{" "}
                     </p>
                     <p style={{ textAlign: "left" }}>
-                      Numero de control: {newItem.ncontrol}
+                      Número de control: {newItem.ncontrol}
                     </p>
                     <p style={{ textAlign: "left" }}>
                       Nombre del Proyecto: {item.attributes.nombre_anteproyecto}
@@ -1306,7 +1311,7 @@ async function fetchDataAsync2() {
                       Programa Educativo: {item.attributes.carrera}
                     </p>
                     <p style={{ textAlign: "left" }}>
-                      Periodo de realizacion de la residencia profesional:
+                      Periodo de realización de la residencia profesional:
                       {item.attributes.periodo}{" "}
                     </p>
                     <p style={{ textAlign: "left" }}>
@@ -1343,7 +1348,7 @@ async function fetchDataAsync2() {
                       return (
                         <React.Fragment key={item.id}>
                           {/* Fila para evalu */}
-                        {promedio}
+                        {promedio} no
                         </React.Fragment>
                       );
                     }
@@ -1382,7 +1387,7 @@ async function fetchDataAsync2() {
 
                               <th>Criterios a evaluar </th>
                               <th>Valor</th>
-                              <th>Evaluacion</th>
+                              <th>Evaluación</th>
 
                               {criteriosAEvaluar2.map((criterio, index) => (
                                 <tr key={item.id + `-dato${index + 1}`}>
@@ -1492,7 +1497,7 @@ async function fetchDataAsync2() {
                             <>
                            
                            <p>
-                            Fecha Evaluacion
+                            Fecha Evaluación
                             <br />
                              {evaluacionCorrespondiente.attributes.fecha} </p>
                             
@@ -1522,7 +1527,34 @@ async function fetchDataAsync2() {
         </div>
       )}     
 
+{mensajeresultado && (
+  <div className="mensajeseguimiento">
+      <div className="mensajeseguimientocontenido">
+      <h5>Hola {newItem.nombre}</h5>
+      <p style={{ textAlign: 'center', color: 'red' }}>¡Aviso!</p>
+      <p style={{ textAlign: 'left', color: 'black' }}>Si usted no está realizando
+      su residencia profesional en la Institución,
+      por favor, no tome en cuenta la evaluación del asesor externo
+      </p>
+      <p style={{ textAlign: 'left', color: 'black' }}>
+        Deberá acudir con dicho asesor para que le realice la evaluación
+      </p>
+      <p style={{ textAlign: 'left', color: 'black' }}>
+       De igual manera,deberá capturar la evaluación realizada por el asesor interno
+       y realizar el cálculo del promedio de ambas evaluaciones
+      </p>
+      <p style={{ textAlign: 'left', color: 'black' }}>
+       En caso contrario, puede continuar con sus resultados de cada evaluación
+       que se generarán de manera automática si se esta realizando dentro de la Institución
+      </p>
+      <p style={{ textAlign: 'left', color: 'blue' }}>
+       Si todavía no tiene asesir interno, favor de esperar a que se le asigne uno
+      </p>
+      <button onClick={() => setmensajeresultado(false)}>Enterado</button>
+    </div>
+  </div>
 
+)}
 
 
 

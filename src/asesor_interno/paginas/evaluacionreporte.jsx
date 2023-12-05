@@ -20,7 +20,8 @@ import "../../estilos_impresion/interno/estilos-impresion_asesor_interno.css"
  */
 const Evalucionreporteresidente = (props) => {
   const nombrealm = props.graphData.graphData.graphData.displayName;
-  const correo = props.graphData.graphData.graphData.mail;
+    //const correo = props.graphData.graphData.graphData.mail;
+    const correo = props.graphData.graphData.graphData.mail.toLowerCase();
   const numerosExtraidos = correo.match(/\d+/);
   const numerosComoCadena = numerosExtraidos ? numerosExtraidos[0] : "";
   // Para obtener los números como un número entero, puedes hacer:
@@ -121,7 +122,7 @@ const Evalucionreporteresidente = (props) => {
         setEvalu(evalu);
         const evaluE = await fetchData(naevaluaE);
         setEvalue(evaluE);
-        console.log("Cargo todos los datos !", evaluE);
+        console.log("¡Cargo todos los datos!", evaluE);
         //setEditingMode(true)
       } catch (error) {
         console.error("Error al obtener los datos:", error);
@@ -193,7 +194,7 @@ const Evalucionreporteresidente = (props) => {
 
     if (!camposLlenos) {
       alert(
-        "Por favor, Rellene todo los criterios a evualuar para poder generar la evaluacion"
+        "Por favor, Rellene todo los criterios a evualuar para poder generar la evaluación"
       );
       return;
     }
@@ -714,7 +715,7 @@ const Evalucionreporteresidente = (props) => {
                 setNewItem({ ...newItem, nombre_anteproyecto: e.target.value })
               }
             ></input>
-            <span>Periodo de Realizacion:</span>
+            <span>Periodo de Realización:</span>
             <input
               type="text"
               name="name"
@@ -725,7 +726,7 @@ const Evalucionreporteresidente = (props) => {
             ></input>
           </div>
           <div className="informacion__pregunta">
-            <span>Numero de Control:</span>
+            <span>Número de Control:</span>
             <input
               type="text"
               name="name"
@@ -803,7 +804,7 @@ const Evalucionreporteresidente = (props) => {
       
 
       <button className="btn-asig" onClick={handleCrearClick}>
-        Imprimir Evaluacion
+        Imprimir Evaluación
       </button>
 {data &&
   data.data
@@ -866,7 +867,7 @@ const Evalucionreporteresidente = (props) => {
                     <br />
                     "Por una Tecnología Propia como principio de libertad"
                     <br />
-                    EVALUACION  DE REPORTE FINAL DE  RESIDENCIA PROFESIONAL
+                    EVALUACIÓN  DE REPORTE FINAL DE  RESIDENCIA PROFESIONAL
                     <br />
                     PROFESIONAL
                   </td>
@@ -890,7 +891,7 @@ const Evalucionreporteresidente = (props) => {
               Nombre del Residente: {newItem.nombre}{" "}
             </p>
             <p style={{ textAlign: "left" }}>
-              Numero de control: {newItem.ncontrol}
+              Número de control: {newItem.ncontrol}
             </p>
             <p style={{ textAlign: "left" }}>
               Nombre del Proyecto: {newItem.nombre_anteproyecto}
@@ -899,7 +900,7 @@ const Evalucionreporteresidente = (props) => {
               Programa Educativo: {newItem.carrera}
             </p>
             <p style={{ textAlign: "left" }}>
-              Periodo de realizacion de la residencia profesional:
+              Periodo de realización de la residencia profesional:
               {newItem.periodo}{" "}
             </p>
             <p style={{ textAlign: "left" }}>
@@ -949,7 +950,7 @@ const Evalucionreporteresidente = (props) => {
                       <br />
                       <br />
                     
-                      Fecha de evaluacion
+                      Fecha de evaluación
 <br />
 {new Date().toLocaleDateString('es-ES')}
                     </p>

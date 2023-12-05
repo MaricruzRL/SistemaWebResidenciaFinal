@@ -225,7 +225,6 @@ function Anteproyectosrecibidos() {
               <tr>
                 <th>Número de Control</th>
                 <th>Nombre</th>
-
                 <th>Nombre de Anteproyecto</th>
                 <th>Periodo</th>
                 <th>Empresa</th>
@@ -268,7 +267,7 @@ function Anteproyectosrecibidos() {
                       className={
                         item.attributes.estado === "Aprobado"
                           ? "aprobado"
-                          : item.attributes.estado === "En Revision"
+                          : item.attributes.estado === "En Revisión"
                           ? "en-revision"
                           : item.attributes.estado === "Corregir"
                           ? "corregir"

@@ -10,7 +10,7 @@ const Salir = () => {
         <h1>
         Coordinador
         </h1>
-        <h2>HASTA LUEGO!</h2>
+        <h2>¡HASTA LUEGO!</h2>
         {/* Pasa la función de redirección al SignOutButton */}
         <SignOutButton  />
       </div>

@@ -63,7 +63,7 @@ export const ProfileData = (props) => {
       {/*<PaginaCor graphData={props}/>*/}
       {/*<PaginaAsesorInterno graphData={props} />*/}
       <PaginaEstu graphData={props}/>
-      </div>
+       </div>
     </Router>
       );
   }

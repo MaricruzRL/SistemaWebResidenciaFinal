@@ -17,7 +17,8 @@ import './../../estilos_impresion/externo/vertical/estilos-impresion_externo_ver
 
 const Evaluacionesreporte = (props) => {
   const nombrealm = props.graphData.graphData.graphData.displayName;
-  const correo = props.graphData.graphData.graphData.mail;
+  //const correo = props.graphData.graphData.graphData.mail;
+  const correo = props.graphData.graphData.graphData.mail.toLowerCase();
   const numerosExtraidos = correo.match(/\d+/);
   const numerosComoCadena = numerosExtraidos ? numerosExtraidos[0] : "";
   // Para obtener los números como un número entero, puedes hacer:
@@ -264,9 +265,9 @@ const Evaluacionesreporte = (props) => {
   return (
     <div className="contenido">
       <div className="Anteproyectosubir__titulo">
-        <h1>¡Bienvenido Aseror Tecnm!</h1>
+        <h1>¡Bienvenido Asesor Tecnm!</h1>
         <h1>
-          En este apartado tu podras visualisar las evaluaciones que ha
+          En este apartado tu podras visualizar las evaluaciones que ha
           realizado
         </h1>
       </div>
@@ -274,8 +275,8 @@ const Evaluacionesreporte = (props) => {
         <table border="1">
           <thead>
             <tr>
-              <th>EVALUACION DE REPORTE FINAL DE RESIDENCIA PROFESIONAL</th>
-              <th>Calificaion</th>
+              <th>EVALUACIÓN DE REPORTE FINAL DE RESIDENCIA PROFESIONAL</th>
+              <th>Calificación</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -306,7 +307,7 @@ const Evaluacionesreporte = (props) => {
                       return (
                         <React.Fragment key={item.id}>
                           {/* Fila para evalu */}
-                          {evaluacionCorrespondiente && (
+                          {evaluacionCorrespondiente && item.attributes.fuera === "No" && (
                             <tr>
                               <td>{item.attributes.nombre}</td>
                               <td>
@@ -316,7 +317,7 @@ const Evaluacionesreporte = (props) => {
                                 className="btn-asig"
                                 onClick={() => handleCrearClick(item)}
                               >
-                                Imprimir Evaluacion Interna
+                                Imprimir Evaluación Interna
                               </button>
                             </tr>
                           )}
@@ -335,8 +336,8 @@ const Evaluacionesreporte = (props) => {
         <table border="1">
           <thead>
             <tr>
-              <th>EVALUACION Y SEGUIMIENTO DE RESIDENCIA PROFESIONAL</th>
-              <th>Calificaion</th>
+              <th>EVALUACIÓN Y SEGUIMIENTO DE RESIDENCIA PROFESIONAL</th>
+              <th>Calificación</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -367,7 +368,7 @@ const Evaluacionesreporte = (props) => {
                       return (
                         <React.Fragment key={item.id}>
                           {/* Fila para evalu */}
-                          {evaluacionCorrespondiente && (
+                          {evaluacionCorrespondiente  && item.attributes.fuera === "No" && (
                             <tr>
                               <td>{item.attributes.nombre}</td>
                               <td>
@@ -377,7 +378,7 @@ const Evaluacionesreporte = (props) => {
                                 className="btn-asig"
                                 onClick={() => handleCrearClick2(item)}
                               >
-                                Imprimir Evaluacion Interna
+                                Imprimir Evaluación Interna
                               </button>
                             </tr>
                           )}
@@ -423,7 +424,7 @@ const Evaluacionesreporte = (props) => {
                     <br />
                     "Por una Tecnología Propia como principio de libertad"
                     <br />
-                    EVALUACION Y SEGUIMIENTO DE RESIDENCIA
+                    EVALUACIÓN Y SEGUIMIENTO DE RESIDENCIA
                     <br />
                     PROFESIONAL
                   </td>
@@ -449,7 +450,7 @@ const Evaluacionesreporte = (props) => {
                 Nombre del Residente: {selectedItem.attributes.nombre}{" "}
               </p>
               <p style={{ textAlign: "left" }}>
-                Numero de control: {selectedItem.attributes.ncontrol}
+                Número de control: {selectedItem.attributes.ncontrol}
               </p>
               <p style={{ textAlign: "left" }}>
                 Nombre del Proyecto:{" "}
@@ -459,7 +460,7 @@ const Evaluacionesreporte = (props) => {
                 Programa Educativo: {selectedItem.attributes.carrera}
               </p>
               <p style={{ textAlign: "left" }}>
-                Periodo de realizacion de la residencia profesional:
+                Periodo de realización de la residencia profesional:
                 {selectedItem.attributes.periodo}{" "}
               </p>
               <p style={{ textAlign: "left" }}>
@@ -528,7 +529,7 @@ const Evaluacionesreporte = (props) => {
 
                             <th>Criterios a evaluar </th>
                             <th>Valor</th>
-                            <th>Evaluacion</th>
+                            <th>Evaluación</th>
 
                             {criteriosAEvaluar.map((criterio, index) => (
                               <tr key={`dato${index + 1}`}>
@@ -628,7 +629,7 @@ const Evaluacionesreporte = (props) => {
                               return (
                                 <>
                                   <p>
-                                  Fecha Evaluacion
+                                  Fecha Evaluación
                                   <br />
                                     {" "}
                                     {
@@ -678,7 +679,7 @@ const Evaluacionesreporte = (props) => {
                     <br />
                     "Por una Tecnología Propia como principio de libertad"
                     <br />
-                    EVALUACION Y SEGUIMIENTO DE RESIDENCIA
+                    EVALUACIÓN Y SEGUIMIENTO DE RESIDENCIA
                     <br />
                     PROFESIONAL
                   </td>
@@ -704,7 +705,7 @@ const Evaluacionesreporte = (props) => {
                 Nombre del Residente: {selectedItem2.attributes.nombre}{" "}
               </p>
               <p style={{ textAlign: "left" }}>
-                Numero de control: {selectedItem2.attributes.ncontrol}
+                Número de control: {selectedItem2.attributes.ncontrol}
               </p>
               <p style={{ textAlign: "left" }}>
                 Nombre del Proyecto:{" "}
@@ -714,7 +715,7 @@ const Evaluacionesreporte = (props) => {
                 Programa Educativo: {selectedItem2.attributes.carrera}
               </p>
               <p style={{ textAlign: "left" }}>
-                Periodo de realizacion de la residencia profesional:
+                Periodo de realización de la residencia profesional:
                 {selectedItem2.attributes.periodo}{" "}
               </p>
               <p style={{ textAlign: "left" }}>
@@ -783,7 +784,7 @@ const Evaluacionesreporte = (props) => {
 
                             <th>Criterios a evaluar </th>
                             <th>Valor</th>
-                            <th>Evaluacion</th>
+                            <th>Evaluación</th>
 
                             {criteriosAEvaluar2.map((criterio, index) => (
                               <tr key={`dato${index + 1}`}>
@@ -823,9 +824,8 @@ const Evaluacionesreporte = (props) => {
                   <td>
                     <p style={{ textAlign: "center" }}>
                       <br />
-                      <br />
-                      <br />
-                      <br />
+          
+ 
                       {evaluE2 &&
                         evaluE2.data &&
                         evaluE2.data
@@ -845,6 +845,7 @@ const Evaluacionesreporte = (props) => {
                                       evaluacionCorrespondiente.attributes
                                         .asesori
                                     }{" "}
+                                    DD
                                   </p>
                                 </>
                               );
@@ -857,15 +858,12 @@ const Evaluacionesreporte = (props) => {
                   <td>
                     <p style={{ textAlign: "center" }}>
                       <br />
-                      <br />
-                      <br />
-                      <br />
+                
                       Sello de la empresa, organismo o dependencia
                     </p>
                   </td>
                   <td style={{ textAlign: "center" }}>
                     <p style={{ textAlign: "center" }}>
-                      <br />
                       <br />
                       <br />
                       <br />
@@ -883,7 +881,7 @@ const Evaluacionesreporte = (props) => {
                               return (
                                 <>
                                   <p>
-                                    Fecha Evaluacion
+                                    Fecha Evaluación
                                     <br />
                                     {" "}
                                     {

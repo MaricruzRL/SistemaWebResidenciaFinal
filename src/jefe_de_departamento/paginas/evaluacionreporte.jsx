@@ -20,7 +20,8 @@ import './../../estilos_impresion/externo/vertical/estilos-impresion_externo_ver
  */
 const Evalucionreporteresidente = (props) => {
   const nombrealm = props.graphData.graphData.graphData.displayName;
-  const correo = props.graphData.graphData.graphData.mail;
+  //const correo = props.graphData.graphData.graphData.mail;
+  const correo = props.graphData.graphData.graphData.mail.toLowerCase();
   const numerosExtraidos = correo.match(/\d+/);
   const numerosComoCadena = numerosExtraidos ? numerosExtraidos[0] : "";
   // Para obtener los números como un número entero, puedes hacer:
@@ -219,7 +220,7 @@ const nuevaluaE2 = "api/evaluacion2-es"
 
     if (!camposLlenos) {
       alert(
-        "Por favor, Rellene todo los criterios a evualuar para poder generar la evaluacion"
+        "Por favor, Rellene todo los criterios a evualuar para poder generar la evaluación"
       );
       return;
     }
@@ -704,7 +705,7 @@ const nuevaluaE2 = "api/evaluacion2-es"
                 data.data
                   .filter(
                     (item) =>
-                      item.attributes.correoasesorE === correo
+                      item.attributes.correoasesorE === correo && item.attributes.fuera === "No"
                   )
                   .map((item) => (
                     <option key={item.id} value={item.attributes.nombre}>
@@ -734,7 +735,7 @@ const nuevaluaE2 = "api/evaluacion2-es"
                 setNewItem({ ...newItem, nombre_anteproyecto: e.target.value })
               }
             ></input>
-            <span>Periodo de Realizacion:</span>
+            <span>Periodo de Realización:</span>
             <input
               type="text"
               name="name"
@@ -745,7 +746,7 @@ const nuevaluaE2 = "api/evaluacion2-es"
             ></input>
           </div>
           <div className="informacion__pregunta">
-            <span>Numero de Control:</span>
+            <span>Número de Control:</span>
             <input
               type="text"
               name="name"
@@ -823,7 +824,7 @@ const nuevaluaE2 = "api/evaluacion2-es"
       
 
       <button className="btn-asig" onClick={handleCrearClick}>
-        Imprimir Evaluacion
+        Imprimir Evaluación
       </button>
 {data &&
   data.data
@@ -858,7 +859,7 @@ const nuevaluaE2 = "api/evaluacion2-es"
           }
         }}
       >
-        Registrar Evaluacion
+        Registrar Evaluación
       </button>
       
       )
@@ -886,7 +887,7 @@ const nuevaluaE2 = "api/evaluacion2-es"
                     <br />
                     "Por una Tecnología Propia como principio de libertad"
                     <br />
-                    EVALUACION  DE REPORTE FINAL DE  RESIDENCIA 
+                    EVALUACIÓN  DE REPORTE FINAL DE  RESIDENCIA 
                     <br />
                     PROFESIONAL
                   </td>
@@ -910,7 +911,7 @@ const nuevaluaE2 = "api/evaluacion2-es"
               Nombre del Residente: {newItem.nombre}{" "}
             </p>
             <p style={{ textAlign: "left" }}>
-              Numero de control: {newItem.ncontrol}
+              Número de control: {newItem.ncontrol}
             </p>
             <p style={{ textAlign: "left" }}>
               Nombre del Proyecto: {newItem.nombre_anteproyecto}
@@ -919,7 +920,7 @@ const nuevaluaE2 = "api/evaluacion2-es"
               Programa Educativo: {newItem.carrera}
             </p>
             <p style={{ textAlign: "left" }}>
-              Periodo de realizacion de la residencia profesional:
+              Periodo de realización de la residencia profesional:
               {newItem.periodo}{" "}
             </p>
             <p style={{ textAlign: "left" }}>
@@ -969,7 +970,7 @@ const nuevaluaE2 = "api/evaluacion2-es"
                       <br />
                       <br />
                       <br />
-                      Fecha de evaluacion
+                      Fecha de evaluación
                       <br />
                       {new Date().toLocaleDateString('es-ES')}
                     </p>

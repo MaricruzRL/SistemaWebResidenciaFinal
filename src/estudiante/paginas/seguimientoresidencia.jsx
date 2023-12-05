@@ -17,18 +17,8 @@ function Seguimientoresidencia(props) {
   const imprimir3 = () => {
        // Ocultar otros elementos antes de imprimir
        const style = document.createElement('style');
-      // style.innerHTML = '@page { size: landscape; }';
-      style.innerHTML = `
-      @page { 
-          size: landscape;
-      }
-      @media print {
-          body *{
-              font-size: 13px;
-          }
-          
-      }
-  `;
+       style.innerHTML = '@page { size: landscape; }';
+     
        // Agregar el estilo al head del documento
        document.head.appendChild(style);
        window.print();
@@ -49,6 +39,9 @@ function Seguimientoresidencia(props) {
   const nombretabla = "api/residentesuploads";
   const correo = props.graphData.graphData.graphData.mail;
 
+  const jefes = "api/jefedepartamentos";
+  const [jefedpt, setjefedpt] = useState(null);
+
   useEffect(() => {
     fetchDataAsync();
   }, [correo]);
@@ -60,6 +53,8 @@ function Seguimientoresidencia(props) {
         (item) => item.attributes.correo === correo
       );
 
+      const jefedpt = await fetchData(jefes);
+      setjefedpt(jefedpt);
       // Actualizar el estado solo con el nombre del residente
       const nombreResidente = residenteSeleccionado
         ? residenteSeleccionado.attributes.nombre
@@ -101,9 +96,11 @@ function Seguimientoresidencia(props) {
         const successMessage = "Por favor, cargue su anteproyecto para una visualización más detallada de esta sección.";
         alert(successMessage);
 
+      }else{
+        handlePeriodoChange(perio)
+        setmensajeseguimiento(true)
       }
-      handlePeriodoChange(perio)
-      setmensajeseguimiento(true)
+     
       console.log("Esto es residente seleccionado", residenteSeleccionado);
     } catch (error) {
       console.error("Error al obtener los datos:", error);
@@ -282,7 +279,7 @@ const handlePeriodoChange = (fechas) => {
 
     if (añoIngresadoEntero >= añoActual) {
       const fechaInicio = new Date(
-        añoActual,
+        añoIngresadoEntero,
         obtenerIndiceMes(mesInicio),
         parseInt(diaInicio, 10)
       );
@@ -509,7 +506,7 @@ console.log("ESTO ES EL MENSAJE", newItem.nombre);
               value={newItem.nombre}
               readOnly
             />
-            <span>Numero de control:</span>
+            <span>Número de control:</span>
             <input
               type="text"
               name="nombre"
@@ -667,29 +664,29 @@ console.log("ESTO ES EL MENSAJE", newItem.nombre);
           </table>
           <br />
           <button className="btn-asig" onClick={agregarFila}>
-            Agregar Actividad
+            Agregar actividad
           </button>
           <button className="btn-asig" onClick={agregarColumna}>
-            Agregar Semana
+            Agregar semana
           </button>
           <button
             className="btn-asig"
             onClick={() => eliminarFila(filas.length - 1)}
           >
-            Eliminar Última Actividad
+            Eliminar última actividad
           </button>
           <button
             className="btn-asig"
             onClick={() => eliminarColumna(columnas.length - 1)}
           >
-            Eliminar Última Semana
+            Eliminar última semana
           </button>
         </div>
         <button className="btn-asig" onClick={handleCrearClick}>
-          Imprimir Seguimiento
+          Imprimir seguimiento
         </button>
         <button className="btn-asig" onClick={eliminarDatoLocalStorage}>
-       Reiniciar Seguimiento
+       Reiniciar seguimiento
       </button>
       </div>
 
@@ -741,12 +738,12 @@ console.log("ESTO ES EL MENSAJE", newItem.nombre);
                   ASESOR EXTERNO: {newItem.asesorE}
                 </p>
                 <p style={{ textAlign: "left" , fontWeight: "bold"}}>
-                  PERIODO DE REALIZAION: {newItem.periodo}
+                  PERIODO DE REALIZACIÓN: {newItem.periodo}
                 </p>
               </div>
               <div className="informacion__pregunta">
                 <p style={{ textAlign: "left" , fontWeight: "bold"}}>
-                  NUMERO DE CONTROL: {newItem.ncontrol}
+                  NÚMERO DE CONTROL: {newItem.ncontrol}
                 </p>
                 <p style={{ textAlign: "left" , fontWeight: "bold" }}>EMPRESA: {newItem.empresa}</p>
                 <p style={{ textAlign: "left" , fontWeight: "bold"}}>
@@ -887,7 +884,15 @@ console.log("ESTO ES EL MENSAJE", newItem.nombre);
                             <td style={{ borderBottom: '1px solid black' }}>{newItem.nombre}</td>
                           </tr>
                           <tr>
-                            <td style={{ borderBottom: '1px solid black' }}>{newItem.asesorE}</td>
+                            <td style={{ borderBottom: '1px solid black' }}>
+                              
+                            {jefedpt && jefedpt.data.length > 0 && (
+                  <p>
+                    {jefedpt.data[0].attributes.nombre}
+                  </p>
+                )}
+                              
+                              </td>
                           </tr>
                         </table>
                       </th>
@@ -912,18 +917,18 @@ console.log("ESTO ES EL MENSAJE", newItem.nombre);
   <div className="mensajeseguimiento">
       <div className="mensajeseguimientocontenido">
       <h5>Hola! {newItem.nombre}</h5>
-      <p style={{ textAlign: 'left' }}>Si su su anteproyecto ya a sido aceptado y ya tiene usted un asesor interno porfavor lea la siguiente recomednacion:</p>
-      <p style={{ textAlign: 'left' }}>El perio que usted ingreso es </p>
+      <p style={{ textAlign: 'left' }}>Si su anteproyecto ya ha sido aceptado y ya tiene usted un asesor interno, porfavor, lea la siguiente recomednación:</p>
+      <p style={{ textAlign: 'left' }}>El periodo que usted ingreso es </p>
       <p style={{ textAlign: 'left', color: 'blue' }}>{newItem.periodo}</p>
-      <p style={{ textAlign: 'left' }}>Por lo tanto Sus Revisiones deberian ser las sguientes fechas del presente año: </p>
+      <p style={{ textAlign: 'left' }}>Por lo tanto, sus revisiones deberían ser las siguientes fechas del presente año: </p>
       <p style={{ textAlign: 'left', color: 'green' }}>{realizarperiodos.revision1}</p>
       <p style={{ textAlign: 'left', color: 'green' }}>{realizarperiodos.revision2}</p>
       <p style={{ textAlign: 'left', color: 'green' }}>{realizarperiodos.revision3}</p>
-      <p style={{ textAlign: 'left' }}>Con una catindad de semanas (aproximadamente) de: </p>
+      <p style={{ textAlign: 'left' }}>Con una cantidad de semanas (aproximadamente) de: </p>
       <p style={{ textAlign: 'left', color: 'green' }}>{realizarperiodos.cantidadsemanas}</p>
-      <p style={{ textAlign: 'left', color: 'red' }}>Aviso!</p>
-      <p style={{ textAlign: 'left', color: 'red' }}>Una vez que usted defina las actividades, semanas y pinte lo deseado no puede volver a agregar mas actividades o semanas
-      No obstante si desea volver a realizar el seguimiento solo haga click en Reiniciar Seguimiento</p>
+      <p style={{ textAlign: 'left', color: 'red' }}>¡Aviso!</p>
+      <p style={{ textAlign: 'left', color: 'red' }}>Una vez que usted defina las actividades y semanas, y configure lo deseado, no podrá agregar más actividades o semanas. 
+      No obstante, si desea reiniciar el seguimiento, simplemente haga clic en 'Reiniciar Seguimiento</p>
       <button onClick={() => setmensajeseguimiento(false)}>Enterado</button>
     </div>
   </div>

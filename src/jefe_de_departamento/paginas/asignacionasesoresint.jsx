@@ -17,7 +17,8 @@ import './../../estilos_impresion/externo/vertical/estilos-impresion_externo_ver
 
 const Asignacionasesorint = (props) => {
   const nombrealm = props.graphData.graphData.graphData.displayName;
-  const correo = props.graphData.graphData.graphData.mail;
+    //const correo = props.graphData.graphData.graphData.mail;
+    const correo = props.graphData.graphData.graphData.mail.toLowerCase();
   const numerosExtraidos = correo.match(/\d+/);
   const numerosComoCadena = numerosExtraidos ? numerosExtraidos[0] : "";
   // Para obtener los números como un número entero, puedes hacer:
@@ -84,7 +85,7 @@ const Asignacionasesorint = (props) => {
         setAsesores(asesores);
         const asesoresE = await fetchData(nombreasesoresE);
         setAsesoresE(asesoresE);
-        console.log("Cargo todos los datos !");
+        console.log("¡Cargo todos los datos!");
         //setEditingMode(true)
       } catch (error) {
         console.error("Error al obtener los datos:", error);
@@ -248,7 +249,7 @@ const Asignacionasesorint = (props) => {
       }
       @media print {
           body *{
-              font-size: 12px;
+              font-size: 11px;
           }
           
       }
@@ -291,7 +292,7 @@ const Asignacionasesorint = (props) => {
   return (
     <div className="contenido">
       <div className="contenido__texto">
-        <h1>Asignación de Asesor interno de Residencia Profesional</h1>
+        <h1>Asignación de Asesor Interno de Residencia Profesional</h1>
       </div>
       <div className="Evalucionreporteresidente__preguntas">
         <div className="contenido__preguntas">
@@ -311,7 +312,7 @@ const Asignacionasesorint = (props) => {
                 ))}
             </select>
 
-            <span>Seleccione al Asesor Externo:</span>
+            <span>Seleccione al Asesor Interno:</span>
             <select
               value={newItem.asesorI || ""}
               onChange={(e) => {
@@ -352,7 +353,7 @@ const Asignacionasesorint = (props) => {
                 setNewItem({ ...newItem, nombre_anteproyecto: e.target.value })
               }
             ></input>
-            <span>Numero de Control:</span>
+            <span>Número de Control:</span>
             <input
               type="text"
               name="name"
@@ -381,7 +382,7 @@ const Asignacionasesorint = (props) => {
                 setNewItem({ ...newItem, carrera: e.target.value })
               }
             ></input>
-            <span>Periodo de Realizacion:</span>
+            <span>Periodo de Realización:</span>
             <input
               type="text"
               name="name"
@@ -393,7 +394,7 @@ const Asignacionasesorint = (props) => {
           </div>
         </div>
         <button className="btn-asig" onClick={registrar}>
-          Rgistrar
+          Registrar
         </button>
 
         <button className="btn-asig" onClick={handleCrearClick}>
@@ -420,7 +421,7 @@ const Asignacionasesorint = (props) => {
                     <br />
                     "Por una Tecnología Propia como principio de libertad"
                     <br />
-                    ASIGNACION DE ASESOR INTERNO DE RESIDENCIA
+                    ASIGNACIÓN DE ASESOR INTERNO DE RESIDENCIA
                     <br />
                     PROFESIONAL
                   </td>

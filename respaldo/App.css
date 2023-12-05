@@ -1,0 +1,149 @@
+:root {
+  --paleta-uno: white;
+  --paleta-dos: #1a3968;
+}
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+/*Contenedor Padre*/
+.contenedor {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+/*Barra Lateral (Contenedor Hijo 1)*/
+.barra__lateral {
+  display: flex;
+  width: min-content;
+  height: 100vh;
+  flex-direction: column;
+  background: #1a3968;
+  cursor: pointer;
+}
+
+.barra__lateral h1{
+  display: none;
+  color: white;
+}
+
+.barra__lateral__abierta {
+  display: flex;
+}
+
+.barra__lateral__abierta h1 {
+  display: flex;
+  font-size: 1.3vw;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.boton__icono {
+  width: 2vw;
+  height: 2vw;
+  color: white;
+}
+
+.barra__titulo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1vw;
+}
+.barra__titulo h1{
+  margin-right: 1vw;
+}
+
+.barra__boton {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 1vw;
+}
+.barra__boton h1{
+  margin-right: 1vw;
+  margin-left: 1vw;
+}
+.barra__boton:hover {
+  background: lightskyblue;
+  transition: all 0.5s;
+}
+
+/*Diseño de Menu Principal (Contenedor Hijo 2)*/
+.principal {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+/*Cabecera (Principal Hijo 1)*/
+.cabecera {
+  display: flex;
+  flex-grow: .1;
+  justify-content: flex-end;
+  align-items: center;
+}
+/*Perfil (Cabecera Hijo 1)*/
+.perfil {
+  display: flex;
+  margin-right: 7vw;
+  align-items: center;
+  text-align: center;
+  color: black;
+}
+.perfil img {
+  width: 3vw;
+  height: 3vw;
+}
+.perfil h1 {
+  font-size: 1.5vw;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  margin-left: 1vw;
+}
+/*Cuerpo (Principal Hijo 2)*/
+.cuerpo {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-around;
+  text-align: center;
+  background-color: white;
+}
+/*Contenido (Cuerpo Hijo 1)*/
+.contenido {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 0 0 2vw rgba(0, 0, 0, 0.37);
+  margin: 0vw 3vw 0 3vw;
+  border-radius: 3rem;
+
+}
+.contenido h1,
+.contenido h2 {
+  margin-top: 2vw;
+  font-size: 1.5vw;
+  /*text-transform: uppercase;*/
+}
+/*Pie de Pagina (Principal Hijo 3)*/
+.pie-pagina {
+  display: flex;
+  flex-grow: .1;
+  align-items: center;
+  justify-content: space-around;
+}
+/*creditos (Pie de pagina Hijo 1)*/
+.creditos {
+  display: flex;
+  align-items: center;
+}
+.creditos img {
+  width: 3vw;
+  height: 3vw;
+}
+.creditos span {
+  font-size: 1.5vw;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  margin-left: 1vw;
+}

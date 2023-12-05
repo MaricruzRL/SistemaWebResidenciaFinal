@@ -1,0 +1,392 @@
+css
+/*AlumnosResidentesAsign.jsx*/
+.contenido__Alumnos_residentes{
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 0 2vw rgba(0, 0, 0, 0.37);
+  margin: 0vw 3vw 0 3vw;
+  border-radius: 3rem;
+  
+}
+.contenido__Alumnos_residentes img{
+  width: 3vw;
+  height: 3vw;
+  margin: 1vw;
+}
+.contenido__Alumnos_residentes h2 {
+  margin-top: 2vw;
+  font-size: 1.5vw;
+  /*text-transform: uppercase;*/
+}
+.tablita {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  max-height: 65vh; /* Permitirá que .tablita ocupe el espacio vertical en .caja */
+  overflow: auto;
+  /* Agrega scroll si el contenido excede el espacio */
+}
+.tablita table{
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+.tablita thead tr th {
+  position: sticky;
+  top: 0;
+  background-color: #1a3968;
+  /* Asegura que el encabezado se muestre correctamente sobre el fondo */
+}
+
+.contenido__Alumnos_residentes table{
+  border: .2vw solid #1a3968;
+  margin: 1vw;
+  margin-left: 2vw;
+  margin-right: 2vw;
+
+  
+}
+.contenido__Alumnos_residentes thead{
+  background-color: #1a3968;
+}
+.contenido__Alumnos_residentes th{
+  color: white;
+  padding: 1vw;
+  font-size: 1vw;
+}
+.contenido__Alumnos_residentes td{
+  border: .2vw solid #1a3968;
+  padding: .5vw;
+}
+.contenido__Alumnos_residentes tbody button{
+font-size: 1vw;
+background-color: white;
+margin: .2vw;
+}
+.contenido__Alumnos_residentes td{
+color: black;
+font-size: 1vw;
+font-weight: bold;
+}
+/*evaluacionreporte.jsx*/
+.contenido__Evalucionreporteresidente{
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 0 0 2vw rgba(0, 0, 0, 0.37);
+  margin: 0 3vw 0 3vw;
+  border-radius: 3rem;
+}
+.Evalucionreporteresidente__titulo{
+  display: flex;
+  flex-grow: .05;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.Evalucionreporteresidente__titulo h1 {
+  font-size: 1.5vw;
+  /*text-transform: uppercase;*/
+}
+.Evalucionreporteresidente__titulo img{
+  width: 3vw;
+  height: 3vw;
+}
+.Evalucionreporteresidente__preguntas{
+  display: flex;
+  flex-direction: row;
+  background-color: lime;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  overflow: hidden;
+}
+.informacion{
+  display: flex;
+  flex-direction: row;
+  background-color: blue;
+}
+.informacion__contenido{
+  display: flex;
+  flex-direction: column;
+  background-color: aqua;
+  height: min-content;
+}
+.residentes__pregunta{
+  display: flex;
+  flex-direction: column;
+  height: min-content;
+}
+.residentes__pregunta span{
+  font-size: 1.3vw;
+  text-align: left;
+  font-weight: bold;
+}
+.residentes__pregunta input{
+  font-size: 1vw;
+  /*max-width: 80%;*/
+  font-weight: bold;
+  border-radius: .5vw;
+  outline: none;
+  padding: .5vw;
+  box-shadow: 0 0 1vw rgb(128,128,128);
+}
+.informacion__tabla{
+  display: flex;
+  height: min-content;
+  background-color: pink;
+  width: min-content;
+}
+.informacion__tabla table{
+  border: .2vw solid #1a3968;
+}
+.informacion__tabla table thead{
+  background-color: #1a3968;
+  color: white;
+  font-size: 1.3vw;
+}
+.informacion__tabla tbody th{
+  background-color: #1a3968;
+  color: white;
+  font-size: 1.3vw;
+}
+.informacion__tabla tbody td{
+  color: black;
+  font-size: 1vw;
+  border: .2vw solid #1a3968;
+  font-weight: bold;
+  padding: .5vw;
+}
+html
+import imagen from "./../../estilos/img/itilogo.png";
+const Evalucionreporteresidente = () => {
+    return (
+        <div className="contenido__Evalucionreporteresidente">
+            <div className="Evalucionreporteresidente__titulo">
+                <h1>Evaluación De Reporte De Residencia Profesional</h1>
+                <img className="imagen_asesor_interno" src={imagen} alt="" />
+            </div>
+            <div className="Evalucionreporteresidente__preguntas">
+                <div className="informacion">
+                    <div className="informacion__contenido">
+                        <div className="residentes__pregunta">
+                            <span>Nombre del residente:</span>
+                            <input type="text" name="name" placeholder="Nombre del residente"></input>
+                        </div>
+                        <div className="residentes__pregunta">
+                            <span>Nombre del proyecto:</span>
+                            <input type="text" name="name" placeholder="Nombre del proyecto"></input>
+                        </div>
+                        <div className="residentes__pregunta">
+                            <span>Periodo de realización de la Residencia <br /> Profesional:</span>
+                            <input type="text" name="name" placeholder="Periodo de realización de la Residencia Profesional"></input>
+                        </div>
+                    </div>
+                    <div className="informacion__contenido">
+                        <div className="residentes__pregunta">
+                            <span>Número de control:</span>
+                            <input type="number" name="numero" min="0" placeholder="N° de control"></input>
+                        </div>
+                        <div className="residentes__pregunta">
+                            <span>Programa educativo:</span>
+                            <input type="text" name="name" placeholder="Programa educativo"></input>
+                        </div>
+                        <div className="residentes__pregunta">
+                            <span>Calificación Parcial <br /> (promedio de ambas evaluaciones):</span>
+                            <input type="text" name="name" placeholder="Calificación parcial"></input>
+                        </div>
+                    </div>
+                </div>
+                <div className="informacion__tabla">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th colSpan="4">En qué medida el residente cumple con lo siguiente</th>
+                            </tr>
+                            <tr>
+                                <th colSpan="2">Criterios a evaluar</th>
+                                <th>Valor</th>
+                                <th>Evaluación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th rowSpan="10">Evaluación por el asesor interno</th>
+                            </tr>
+                            <tr>
+                                <td>Asistió puntualmente a las reuniones de asesoría</td>
+                                <td>10</td>
+                                <td>
+                                    <select name="selected">
+                                        <option value="uno"></option>
+                                        <option value="uno">1</option>
+                                        <option value="dos">2</option>
+                                        <option value="tres">3</option>
+                                        <option value="cuatro">4</option>
+                                        <option value="cinco">5</option>
+                                        <option value="seis">6</option>
+                                        <option value="siete">7</option>
+                                        <option value="ocho">8</option>
+                                        <option value="nueve">9</option>
+                                        <option value="diez">10</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Demuestra conocimiento en el área de su especialidad</td>
+                                <td>20</td>
+                                <td>
+                                    <select name="selected">
+                                        <option value="uno"></option>
+                                        <option value="uno">1</option>
+                                        <option value="dos">2</option>
+                                        <option value="tres">3</option>
+                                        <option value="cuatro">4</option>
+                                        <option value="cinco">5</option>
+                                        <option value="seis">6</option>
+                                        <option value="siete">7</option>
+                                        <option value="ocho">8</option>
+                                        <option value="nueve">9</option>
+                                        <option value="diez">10</option>
+                                        <option value="once">11</option>
+                                        <option value="doce">12</option>
+                                        <option value="trece">13</option>
+                                        <option value="catorce">14</option>
+                                        <option value="quince">15</option>
+                                        <option value="dieciseis">16</option>
+                                        <option value="diecisiete">17</option>
+                                        <option value="dieciocho">18</option>
+                                        <option value="diecinueve">19</option>
+                                        <option value="veinte">20</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Trabaja en equipo y se comunica de forma efectiva (oral y escrita)</td>
+                                <td>15</td>
+                                <td>
+                                    <select name="selected">
+                                        <option value="uno"></option>
+                                        <option value="uno">1</option>
+                                        <option value="dos">2</option>
+                                        <option value="tres">3</option>
+                                        <option value="cuatro">4</option>
+                                        <option value="cinco">5</option>
+                                        <option value="seis">6</option>
+                                        <option value="siete">7</option>
+                                        <option value="ocho">8</option>
+                                        <option value="nueve">9</option>
+                                        <option value="diez">10</option>
+                                        <option value="once">11</option>
+                                        <option value="doce">12</option>
+                                        <option value="trece">13</option>
+                                        <option value="catorce">14</option>
+                                        <option value="quince">15</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Es dedicado y proactivo en las actividades encomendadas</td>
+                                <td>20</td>
+                                <td>
+                                    <select name="selected">
+                                        <option value="uno"></option>
+                                        <option value="uno">1</option>
+                                        <option value="dos">2</option>
+                                        <option value="tres">3</option>
+                                        <option value="cuatro">4</option>
+                                        <option value="cinco">5</option>
+                                        <option value="seis">6</option>
+                                        <option value="siete">7</option>
+                                        <option value="ocho">8</option>
+                                        <option value="nueve">9</option>
+                                        <option value="diez">10</option>
+                                        <option value="once">11</option>
+                                        <option value="doce">12</option>
+                                        <option value="trece">13</option>
+                                        <option value="catorce">14</option>
+                                        <option value="quince">15</option>
+                                        <option value="dieciseis">16</option>
+                                        <option value="diecisiete">17</option>
+                                        <option value="dieciocho">18</option>
+                                        <option value="diecinueve">19</option>
+                                        <option value="veinte">20</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Es ordenado y cumple satisfactoriamente con las actividades
+                                    encomendadas en los tiempos establecidos en el cronograma</td>
+                                <td>20</td>
+                                <td>
+                                    <select name="selected">
+                                        <option value="uno"></option>
+                                        <option value="uno">1</option>
+                                        <option value="dos">2</option>
+                                        <option value="tres">3</option>
+                                        <option value="cuatro">4</option>
+                                        <option value="cinco">5</option>
+                                        <option value="seis">6</option>
+                                        <option value="siete">7</option>
+                                        <option value="ocho">8</option>
+                                        <option value="nueve">9</option>
+                                        <option value="diez">10</option>
+                                        <option value="once">11</option>
+                                        <option value="doce">12</option>
+                                        <option value="trece">13</option>
+                                        <option value="catorce">14</option>
+                                        <option value="quince">15</option>
+                                        <option value="dieciseis">16</option>
+                                        <option value="diecisiete">17</option>
+                                        <option value="dieciocho">18</option>
+                                        <option value="diecinueve">19</option>
+                                        <option value="veinte">20</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Propone mejoras al proyecto</td>
+                                <td>15</td>
+                                <td>
+                                    <select name="selected">
+                                        <option value="uno"></option>
+                                        <option value="uno">1</option>
+                                        <option value="dos">2</option>
+                                        <option value="tres">3</option>
+                                        <option value="cuatro">4</option>
+                                        <option value="cinco">5</option>
+                                        <option value="seis">6</option>
+                                        <option value="siete">7</option>
+                                        <option value="ocho">8</option>
+                                        <option value="nueve">9</option>
+                                        <option value="diez">10</option>
+                                        <option value="once">11</option>
+                                        <option value="doce">12</option>
+                                        <option value="trece">13</option>
+                                        <option value="catorce">14</option>
+                                        <option value="quince">15</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Calificación total</td>
+                                <td>100</td>
+                                <td>
+                                    <select name="selected">
+                                        <option value="uno"></option>
+                                        <option value="uno">100</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    );
+};
+export default Evalucionreporteresidente;
